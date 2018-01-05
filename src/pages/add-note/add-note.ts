@@ -10,11 +10,12 @@ import { NoteService } from '../../providers/note-service/note-service';
 })
 export class AddNotePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private noteService: NoteService) {
-  }
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams, 
+              private noteService: NoteService) { }
 
   saveNote(value: { title: string }){
-    this.noteService.saveNote(value);
+   // this.noteService.saveNote(value);
   }
 
 }
