@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+// import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { Note } from '../../models/note.models'
+import { Note } from '../../models/note.models';
 
 
 @Injectable()
@@ -22,7 +22,9 @@ export class NoteService {
     return this.storage.get('notes').then(
       (notes) => {
         this.notes = notes == null ? [] : notes;
-        return [...this.notes]; // return this.notes.slice() // return a copy of array
+         return [...this.notes]; // return this.notes.slice() // return a copy of array
+        //return this.notes.slice();
+        // console.log( this.notes.slice());
       }
     ) // Returns a promise with the value of the given key
   }

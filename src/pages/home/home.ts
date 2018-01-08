@@ -1,3 +1,4 @@
+import { Note } from './../../models/note.models';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AddNotePage } from '../add-note/add-note';
@@ -9,7 +10,7 @@ import { NoteService } from '../../providers/note-service/note-service';
 })
 export class HomePage {
 
-  notes: { title: string }[] = [];
+  notes: Promise<Note[]>;
 
   constructor(public navCtrl: NavController, private noteService: NoteService) { }
 
