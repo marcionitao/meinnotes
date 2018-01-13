@@ -1,3 +1,4 @@
+import { ViewNotePage } from './../view-note/view-note';
 import { Note } from './../../models/note.models';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
@@ -10,7 +11,8 @@ import { NoteService } from '../../providers/note-service/note-service';
 })
 export class HomePage {
 
-  notes: Promise<Note[]>;
+  private notes: Promise<Note[]>;
+  private note: Note;
 
   constructor(public navCtrl: NavController, private noteService: NoteService) { }
 
@@ -21,6 +23,14 @@ export class HomePage {
 
   addNote(){
     this.navCtrl.push(AddNotePage);
+  }
+
+  getNote(createDate: number){
+    this.noteService.getNote(createDate).then((n) => {
+      this.note = n;
+      console.log("Home: "+createDate);
+      this.navCtrl.push(ViewNotePage, { note: this.note }) // 'note' está referenciado no contrutor de ViewNotePage
+    });
   }
 
   getAllNotes(){
